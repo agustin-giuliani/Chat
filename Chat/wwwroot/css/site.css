@@ -54,3 +54,15 @@ body {
   height: 60px;
   line-height: 60px; /* Vertically center the text there */
 }
+
+
+/*Modificaciones del proyecto*/
+.imagenIcono {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.espacios {
+    padding-bottom: 50px;
+}

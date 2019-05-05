@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Chat.Data.Entities.Mensaje>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<div class="col-md-10 .align-content-sm-center">
+
+    @foreach (var item in Model)
+    {
+        <div class="row">
+            <div class="col-md-1">
+                <img class="imagenIcono" src=@Html.DisplayFor(modelItem => item.UsuarioEmisor.UrlAvatar) />
+            </div>
+            <div class="col-md-11 ">
+                <p>@Html.DisplayFor(modelItem => item.UsuarioEmisor.Id)</p>
+                <p>@Html.DisplayFor(modelItem => item.MensajeEnviado)</p>
+                <p style="color: grey">@Html.DisplayFor(modelItem => item.Enviado) </p>
+                <p>@Html.DisplayFor(modelItem => item.UsuarioEmisor.NombreUsuario)</p>
+            </div>
+        </div>
+    }
+
+</div>
+
+
+
+
+

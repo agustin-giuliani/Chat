@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Chat.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20190502030039_InitialDb")]
-    partial class InitialDb
+    [Migration("20190504201544_Crear Base")]
+    partial class CrearBase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -29,43 +29,33 @@ namespace Chat.Migrations
 
                     b.Property<DateTime>("enviado");
 
-                    b.Property<int>("idGrupo");
-
                     b.Property<string>("mensaje")
                         .HasMaxLength(240);
 
-                    b.Property<int?>("usuarioEmisorid");
-
-                    b.Property<int?>("usuarioReceptorid");
+                    b.Property<int?>("usuarioEmisorId");
 
                     b.HasKey("id");
 
-                    b.HasIndex("usuarioEmisorid");
-
-                    b.HasIndex("usuarioReceptorid");
+                    b.HasIndex("usuarioEmisorId");
 
                     b.ToTable("Mensajes");
                 });
 
             modelBuilder.Entity("Chat.Data.Entities.Usuario", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("contraseña");
+                    b.Property<string>("CorreoElectronico");
 
-                    b.Property<DateTime>("fechaAlta");
+                    b.Property<string>("NombreUsuario");
 
-                    b.Property<string>("nombreUsuario");
+                    b.Property<DateTime>("UltimoAcceso");
 
-                    b.Property<string>("preguntaSecreta");
+                    b.Property<string>("UrlAvatar");
 
-                    b.Property<string>("respuestaPregSecreta");
-
-                    b.Property<DateTime>("ultimoAcceso");
-
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.ToTable("Usuario");
                 });
@@ -74,11 +64,7 @@ namespace Chat.Migrations
                 {
                     b.HasOne("Chat.Data.Entities.Usuario", "usuarioEmisor")
                         .WithMany()
-                        .HasForeignKey("usuarioEmisorid");
-
-                    b.HasOne("Chat.Data.Entities.Usuario", "usuarioReceptor")
-                        .WithMany()
-                        .HasForeignKey("usuarioReceptorid");
+                        .HasForeignKey("usuarioEmisorId");
                 });
 #pragma warning restore 612, 618
         }

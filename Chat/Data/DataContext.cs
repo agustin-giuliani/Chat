@@ -1,3 +1,5 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Chat.Data.Entities;
 namespace Chat.Data {
 
     using Microsoft.EntityFrameworkCore;
@@ -9,5 +11,7 @@ namespace Chat.Data {
         public DataContext (DbContextOptions<DataContext> options) : base (options) {
 
         }
+     
+        public DbSet<Chat.Data.Entities.Usuario> Usuario { get; set; }
     }
 }

@@ -1,37 +1,23 @@
 ﻿namespace Chat.Data.Entities
 {
-
     using System;
     using System.ComponentModel.DataAnnotations;
-   
+
     public class Mensaje
     {
-        public int id { get; set; }
+        public int Id { get; set; }
 
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
         [Display(Name = "Enviado")]
-        public DateTime enviado { get; set; }
-
+        public DateTime Enviado { get; set; }
         [MaxLength(240)]
         [Display(Name = "Mensaje")]
-        public string mensaje { get; set; }
-
+        public string MensajeEnviado { get; set; }
         [Display(Name = "Emisor")]
-        public Usuario usuarioEmisor { get; set; }
+        public Usuario UsuarioEmisor { get; set; }
 
-        [Display(Name = "Receptor")]
-        public Usuario usuarioReceptor { get; set; }
-
-        [Display(Name = "Grupo")]
-        public int idGrupo { get; set; }
-
-        
-
-
-
-
-
+       
     }
-
 
 
 }

@@ -1,20 +1,18 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Chat.Data.Entities
 {
     public class Usuario
     {
 
-        public int id { get; set; }
-        public string nombreUsuario { get; set; }
-        public string contraseña { get; set; }
-
-        public DateTime fechaAlta { get; set; }
-        public DateTime ultimoAcceso { get; set; }
-
-        public string preguntaSecreta { get; set; }
-
-        public string respuestaPregSecreta { get; set; }
+        public int Id { get; set; }
+        [Display (Name = "Nombre de Usuario")]
+        public string NombreUsuario { get; set; }
+        [Display(Name = "Ultimo Acceso")]
+        public DateTime UltimoAcceso { get; set; }
+        public string UrlAvatar { get; set; }
+        public string CorreoElectronico  { get; set; }
 
     }
 }

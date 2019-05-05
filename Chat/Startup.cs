@@ -1,19 +1,14 @@
-﻿namespace Chat {
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿namespace Chat
+{
     using Chat.Data;
     using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.AspNetCore.SignalR;
 
     public class Startup {
         public Startup(IConfiguration configuration) {
@@ -30,8 +25,9 @@ using Microsoft.Extensions.DependencyInjection;
                 cfg.UseSqlServer(Configuration.GetConnectionString("ConexionPrincipal"));
             }
             );
-                
 
+            services.AddSignalR();
+            
             services.Configure<CookiePolicyOptions>(options => {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
                 options.CheckConsentNeeded = context => true;
@@ -51,10 +47,17 @@ using Microsoft.Extensions.DependencyInjection;
                 app.UseHsts();
             }
 
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
+            app.UseSignalR(options =>
+            {
+                options.MapHub<ChatHub>("/hub");
+            });
+
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
             app.UseMvc(routes => {
                 routes.MapRoute(
                     name: "default",
