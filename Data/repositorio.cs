@@ -7,11 +7,11 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using Chat.Data.Entities;
-    public class repositorio
+    public class Repositorio
     {
         private readonly DataContext context;
 
-        public repositorio(DataContext context)
+        public Repositorio(DataContext context)
         {
             this.context = context;
         }
