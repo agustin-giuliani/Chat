@@ -13,3 +13,12 @@ Lucas Diers
 Emiliano Policardo
 
 Para mayor información 
+
+Formas de Uso.
+
+Para realizar la generacion de la base de datos y las correspondientes los comandos utilizados son:
+
+dotnet ef dabatase update
+dotnet ef migrations add "NombreDeMigracion"
+dotnet ef dabatase update
+
