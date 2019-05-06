@@ -1,6 +1,7 @@
 ﻿namespace Chat.Data.Entities
 {
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     public class Mensaje
@@ -15,9 +16,7 @@
         public string MensajeEnviado { get; set; }
         [Display(Name = "Emisor")]
         public Usuario UsuarioEmisor { get; set; }
-
-       
-    }
+                    }
 
 
 }
