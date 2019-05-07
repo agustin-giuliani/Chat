@@ -49,27 +49,16 @@
         </nav>
     </header>
     <div class="container">
-        <partial name="_CookieConsentPartial" />
+       @* <partial name="_CookieConsentPartial" />*@
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
     <footer class="border-top footer text-muted">
-        <div class="row">
-            <div class="input-group container">
-                <input type="text" class="form-control" placeholder="Mensaje">
-                <div class="input-group-append">
-                    <button class="btn btn-primary" type="submit" id="button-addon2">Enviar</button>
-                </div>
-            </div>
-        </div>
-
-
-        @*<div class="container">
-
+        <div class="container fixed-bottom">
             &copy; 2019 - Chat - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>*@
+        </div>
     </footer>
 
     <environment include="Development">
